@@ -1,10 +1,10 @@
-const express = require("express");
+import express from "express";
 const app = express();
-const port = 3000; // Cổng server lắng nghe
+const port = 5000; // Cổng server lắng nghe
 
 // Định nghĩa route đơn giản để trả về "Hello World!"
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.get("/api/hello", (req, res) => {
+  res.send({ message: "Big Education!" });
 });
 
 // Khởi động server và lắng nghe trên cổng đã định nghĩa
