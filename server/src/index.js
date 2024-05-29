@@ -1,13 +1,20 @@
 import express from "express";
+import morgan from "morgan";
+import { route } from "./routes/index.js";
+import { connect } from "./config/database/index.js";
+import methodOverride from "method-override";
 const app = express();
-const port = 5000; // Cổng server lắng nghe
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+const port = 5000;
+//Connect to db
+connect();
+//HTTP logger
+app.use(morgan("combined"));
 
-// Định nghĩa route đơn giản để trả về "Hello World!"
-app.get("/api/hello", (req, res) => {
-  res.send({ message: "Big Education!" });
-});
+route(app);
 
-// Khởi động server và lắng nghe trên cổng đã định nghĩa
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
