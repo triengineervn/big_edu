@@ -3,10 +3,12 @@ import morgan from "morgan";
 import { route } from "./routes/index.js";
 import { connect } from "./config/database/index.js";
 import methodOverride from "method-override";
+import cors from "cors";
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(cors());
 const port = 5000;
 //Connect to db
 connect();

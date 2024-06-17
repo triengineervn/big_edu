@@ -4,11 +4,13 @@ import MongooseDelete from "mongoose-delete";
 const Schema = mongoose.Schema;
 
 const Course = new Schema({
-  name: { type: String },
+  title: { type: String },
   description: { type: String },
   image: { type: String },
   videoId: { type: String },
-  level: { type: String },
+  price: { type: String },
+  status: { type: String },
+  rating: { type: Number },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   slug: { type: String, slug: "name", unique: true },
